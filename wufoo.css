@@ -1,5 +1,7 @@
 /* =========================================================
-   myXP Wufoo Theme — Version 2026-05-11-v4
+   myXP Wufoo Theme — Version 2026-05-11-v5
+   Fixes: radio/checkbox layout without breaking date, time,
+   phone, currency, name, or address fields.
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
@@ -182,8 +184,6 @@ body {
   margin-bottom: 10px !important;
 }
 
-/* Required marker */
-
 .wufoo .req {
   color: var(--myxp-teal) !important;
   font-weight: 800 !important;
@@ -214,8 +214,6 @@ body {
   resize: vertical !important;
 }
 
-/* Width handling */
-
 .wufoo input.large,
 .wufoo select.large,
 .wufoo textarea.large {
@@ -231,8 +229,6 @@ body {
 .wufoo select.small {
   width: 88px !important;
 }
-
-/* Focus state */
 
 .wufoo input.text:focus,
 .wufoo input.search:focus,
@@ -269,44 +265,43 @@ body {
 
 /* =========================================================
    RADIO BUTTONS & CHECKBOXES
+   Scoped carefully so date/time/phone fields do not break.
 ========================================================= */
-
-/* Each option row */
-
-.wufoo li span {
-  display: flex !important;
-  align-items: stretch !important;
-  width: 100% !important;
-  max-width: 700px !important;
-  margin: 10px 0 !important;
-  padding: 0 !important;
-  gap: 12px !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-}
-
-/* Actual radio / checkbox */
 
 .wufoo input.radio,
 .wufoo input.checkbox {
   appearance: auto !important;
   -webkit-appearance: auto !important;
-
   accent-color: var(--myxp-teal) !important;
 
   width: 18px !important;
   height: 18px !important;
   min-width: 18px !important;
 
-  margin-top: 18px !important;
-  margin-left: 2px !important;
-
-  flex: 0 0 18px !important;
+  margin: 0 12px 0 0 !important;
+  padding: 0 !important;
 
   position: static !important;
+  float: none !important;
+  vertical-align: middle !important;
 }
 
-/* Choice card */
+/* Only option rows become flex rows */
+
+.wufoo li span:has(input.radio),
+.wufoo li span:has(input.checkbox) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: 700px !important;
+  margin: 10px 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* Choice card sits directly beside the radio/checkbox */
 
 .wufoo label.choice {
   display: flex !important;
@@ -339,8 +334,6 @@ body {
   overflow: visible !important;
 }
 
-/* Selected state */
-
 .wufoo input.radio:checked + label.choice,
 .wufoo input.checkbox:checked + label.choice {
   background: #f2fbfc !important;
@@ -350,24 +343,39 @@ body {
 
 /* =========================================================
    MULTI-PART FIELDS
+   Restores Wufoo’s normal layout for date, time, phone,
+   currency, name, address, etc.
 ========================================================= */
+
+.wufoo li span {
+  vertical-align: top !important;
+  overflow: visible !important;
+}
 
 .wufoo li.complex span,
 .wufoo li.phone span,
 .wufoo li.date span,
 .wufoo li.time span,
 .wufoo li.name span,
-.wufoo li.address span {
+.wufoo li.address span,
+.wufoo li.currency span {
   display: inline-block !important;
   width: auto !important;
   max-width: none !important;
-  margin-right: 10px !important;
+  margin: 0 10px 10px 0 !important;
+  padding: 0 !important;
   vertical-align: top !important;
 }
 
-/* Sub labels */
+/* Sub-labels under split fields */
 
-.wufoo li:not(.radio):not(.checkbox) span label:not(.choice),
+.wufoo li.complex span label,
+.wufoo li.phone span label,
+.wufoo li.date span label,
+.wufoo li.time span label,
+.wufoo li.name span label,
+.wufoo li.address span label,
+.wufoo li.currency span label,
 .wufoo span label:not(.choice) {
   display: block !important;
   color: var(--myxp-navy) !important;
@@ -377,12 +385,21 @@ body {
   line-height: 1.4 !important;
 }
 
-/* Currency/date symbols */
+/* Symbols and separators */
 
 .wufoo span.symbol,
 .wufoo .symbol {
+  display: inline-block !important;
   color: var(--myxp-navy) !important;
-  padding: 0 6px !important;
+  padding: 14px 4px 0 !important;
+  vertical-align: top !important;
+}
+
+/* Address fields should breathe */
+
+.wufoo li.address input.text,
+.wufoo li.address select.select {
+  margin-bottom: 8px !important;
 }
 
 /* =========================================================
@@ -500,7 +517,8 @@ body {
     font-size: 16px !important;
   }
 
-  .wufoo li span {
+  .wufoo li span:has(input.radio),
+  .wufoo li span:has(input.checkbox) {
     max-width: 100% !important;
   }
 
