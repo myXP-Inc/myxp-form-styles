@@ -1,7 +1,5 @@
 /* =========================================================
-   myXP Wufoo Theme — Version 2026-05-11-v5
-   Fixes: radio/checkbox layout without breaking date, time,
-   phone, currency, name, or address fields.
+   myXP Wufoo Theme — Version 2026-05-11-v6
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
@@ -19,10 +17,6 @@
   --myxp-logo: url('https://i.imgur.com/qgNI9zO.png');
 }
 
-/* =========================================================
-   PAGE
-========================================================= */
-
 html,
 body {
   min-height: 100% !important;
@@ -39,10 +33,6 @@ body {
   line-height: 1.6 !important;
 }
 
-/* =========================================================
-   MAIN FORM CARD
-========================================================= */
-
 #container {
   max-width: 980px !important;
   margin: 0 auto 60px !important;
@@ -52,10 +42,6 @@ body {
   overflow: visible !important;
   border: none !important;
 }
-
-/* =========================================================
-   myXP LOGO HEADER
-========================================================= */
 
 #container::before {
   content: "";
@@ -70,20 +56,12 @@ body {
   border-bottom: 1px solid #e8ecef;
 }
 
-/* =========================================================
-   HIDE WUFOO BRANDING
-========================================================= */
-
 #logo,
 #logo a,
 #container .logo,
 #container > .wufooHeader {
   display: none !important;
 }
-
-/* =========================================================
-   INNER FORM AREA
-========================================================= */
 
 .wufoo {
   padding: 34px 52px 60px !important;
@@ -98,10 +76,6 @@ body {
   padding: 0 !important;
   list-style: none !important;
 }
-
-/* =========================================================
-   TITLE AREA
-========================================================= */
 
 .wufoo .info {
   border-bottom: 1px dotted #d7dde3 !important;
@@ -126,10 +100,6 @@ body {
   max-width: 720px !important;
   margin: 0 auto !important;
 }
-
-/* =========================================================
-   SECTION HEADERS
-========================================================= */
 
 .wufoo .section {
   margin: 40px 0 28px !important;
@@ -156,10 +126,6 @@ body {
   max-width: 720px !important;
 }
 
-/* =========================================================
-   FIELD SPACING
-========================================================= */
-
 .wufoo li {
   margin: 0 0 32px !important;
   padding: 0 !important;
@@ -168,10 +134,6 @@ body {
   overflow: visible !important;
   clear: both !important;
 }
-
-/* =========================================================
-   LABELS
-========================================================= */
 
 .wufoo label.desc,
 .wufoo legend.desc {
@@ -184,14 +146,15 @@ body {
   margin-bottom: 10px !important;
 }
 
+/* Keep required asterisk inline */
 .wufoo .req {
+  display: inline !important;
   color: var(--myxp-teal) !important;
   font-weight: 800 !important;
+  margin-left: 3px !important;
+  line-height: inherit !important;
+  vertical-align: baseline !important;
 }
-
-/* =========================================================
-   INPUT FIELDS
-========================================================= */
 
 .wufoo input.text,
 .wufoo input.search,
@@ -239,10 +202,6 @@ body {
   outline: none !important;
 }
 
-/* =========================================================
-   HELPER / INSTRUCTION TEXT
-========================================================= */
-
 .wufoo .instruct,
 .wufoo p.instruct,
 .wufoo small,
@@ -264,8 +223,8 @@ body {
 }
 
 /* =========================================================
-   RADIO BUTTONS & CHECKBOXES
-   Scoped carefully so date/time/phone fields do not break.
+   RADIO BUTTONS & CHECKBOXES — v6
+   No :has selector. Does not break date/time/name fields.
 ========================================================= */
 
 .wufoo input.radio,
@@ -273,65 +232,37 @@ body {
   appearance: auto !important;
   -webkit-appearance: auto !important;
   accent-color: var(--myxp-teal) !important;
-
+  display: inline-block !important;
+  position: static !important;
+  float: none !important;
   width: 18px !important;
   height: 18px !important;
   min-width: 18px !important;
-
   margin: 0 12px 0 0 !important;
   padding: 0 !important;
-
-  position: static !important;
-  float: none !important;
   vertical-align: middle !important;
 }
 
-/* Only option rows become flex rows */
-
-.wufoo li span:has(input.radio),
-.wufoo li span:has(input.checkbox) {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  width: 100% !important;
-  max-width: 700px !important;
-  margin: 10px 0 !important;
-  padding: 0 !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-}
-
-/* Choice card sits directly beside the radio/checkbox */
-
 .wufoo label.choice {
-  display: flex !important;
+  display: inline-flex !important;
   align-items: center !important;
-
-  flex: 1 1 auto !important;
-
-  width: 100% !important;
-  max-width: 100% !important;
-
+  width: calc(100% - 36px) !important;
+  max-width: 650px !important;
   min-height: 56px !important;
-
-  margin: 0 !important;
+  margin: 8px 0 !important;
   padding: 14px 18px !important;
-
   background: #f8fafb !important;
   border: 1px solid #dfe6eb !important;
   border-radius: 12px !important;
-
   color: var(--myxp-navy) !important;
-
   font-family: 'Manrope', sans-serif !important;
   font-size: 15px !important;
   line-height: 1.5 !important;
   font-weight: 600 !important;
-
   box-sizing: border-box !important;
-
   white-space: normal !important;
   overflow: visible !important;
+  vertical-align: middle !important;
 }
 
 .wufoo input.radio:checked + label.choice,
@@ -341,16 +272,14 @@ body {
   box-shadow: 0 0 0 3px rgba(15, 174, 189, 0.08) !important;
 }
 
-/* =========================================================
-   MULTI-PART FIELDS
-   Restores Wufoo’s normal layout for date, time, phone,
-   currency, name, address, etc.
-========================================================= */
-
+/* Choice wrappers only */
 .wufoo li span {
-  vertical-align: top !important;
   overflow: visible !important;
 }
+
+/* =========================================================
+   MULTI-PART FIELDS
+========================================================= */
 
 .wufoo li.complex span,
 .wufoo li.phone span,
@@ -366,8 +295,6 @@ body {
   padding: 0 !important;
   vertical-align: top !important;
 }
-
-/* Sub-labels under split fields */
 
 .wufoo li.complex span label,
 .wufoo li.phone span label,
@@ -385,8 +312,6 @@ body {
   line-height: 1.4 !important;
 }
 
-/* Symbols and separators */
-
 .wufoo span.symbol,
 .wufoo .symbol {
   display: inline-block !important;
@@ -395,16 +320,10 @@ body {
   vertical-align: top !important;
 }
 
-/* Address fields should breathe */
-
 .wufoo li.address input.text,
 .wufoo li.address select.select {
   margin-bottom: 8px !important;
 }
-
-/* =========================================================
-   FILE UPLOAD
-========================================================= */
 
 .wufoo input.file {
   border-radius: 12px !important;
@@ -412,10 +331,6 @@ body {
   background: #fafcfd !important;
   padding: 14px !important;
 }
-
-/* =========================================================
-   SUBMIT BUTTON AREA
-========================================================= */
 
 .wufoo .buttons,
 .wufoo li.buttons {
@@ -432,26 +347,18 @@ body {
 .wufoo input.submit,
 .wufoo button.submit {
   display: inline-block !important;
-
   background: var(--myxp-teal) !important;
   color: #ffffff !important;
-
   border: none !important;
   border-radius: 14px !important;
-
   padding: 16px 32px !important;
-
   min-width: 240px !important;
   min-height: 58px !important;
-
   font-family: 'Manrope', sans-serif !important;
   font-size: 17px !important;
   font-weight: 800 !important;
-
   cursor: pointer !important;
-
   box-shadow: 0 6px 16px rgba(15, 174, 189, 0.18) !important;
-
   transition: all 0.2s ease !important;
 }
 
@@ -461,10 +368,6 @@ body {
   background: var(--myxp-navy) !important;
   transform: translateY(-1px);
 }
-
-/* =========================================================
-   ERRORS
-========================================================= */
 
 .wufoo li.error,
 .wufoo .error {
@@ -477,10 +380,6 @@ body {
 .wufoo li.error select {
   border-color: var(--myxp-error) !important;
 }
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media (max-width: 700px) {
 
@@ -517,13 +416,9 @@ body {
     font-size: 16px !important;
   }
 
-  .wufoo li span:has(input.radio),
-  .wufoo li span:has(input.checkbox) {
-    max-width: 100% !important;
-  }
-
   .wufoo label.choice {
-    width: 100% !important;
+    width: calc(100% - 34px) !important;
+    max-width: none !important;
     min-height: 50px !important;
   }
 
