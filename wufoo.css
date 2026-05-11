@@ -428,3 +428,70 @@ body {
     width: 100% !important;
   }
 }
+/* =========================================================
+   ADDRESS FIELD FIX — myXP Wufoo
+   Add to full theme or merge into next version.
+========================================================= */
+
+.wufoo li.address {
+  max-width: 700px !important;
+}
+
+.wufoo li.address span {
+  display: block !important;
+  width: 100% !important;
+  max-width: 700px !important;
+  margin: 0 0 14px 0 !important;
+  padding: 0 !important;
+  clear: both !important;
+}
+
+.wufoo li.address input.text,
+.wufoo li.address select.select {
+  display: block !important;
+  width: 100% !important;
+  max-width: 700px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.wufoo li.address span.left,
+.wufoo li.address span.right {
+  display: inline-block !important;
+  width: calc(50% - 8px) !important;
+  max-width: none !important;
+  margin: 0 12px 14px 0 !important;
+  vertical-align: top !important;
+  clear: none !important;
+}
+
+.wufoo li.address span.right {
+  margin-right: 0 !important;
+}
+
+.wufoo li.address span.left input.text,
+.wufoo li.address span.right input.text,
+.wufoo li.address span.left select.select,
+.wufoo li.address span.right select.select {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.wufoo li.address label {
+  display: block !important;
+  color: var(--myxp-navy) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-top: 6px !important;
+  line-height: 1.4 !important;
+}
+
+/* Mobile address fields stack cleanly */
+@media (max-width: 700px) {
+  .wufoo li.address span.left,
+  .wufoo li.address span.right {
+    display: block !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+  }
+}
