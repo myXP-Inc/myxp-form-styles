@@ -1,0 +1,330 @@
+/* =========================================================
+   myXP Wufoo Theme
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --myxp-teal: #0FAEBD;
+  --myxp-navy: #224466;
+  --myxp-bg: #F4F4F3;
+  --myxp-white: #ffffff;
+  --myxp-border: #dfe5ea;
+  --myxp-muted: #66788a;
+  --myxp-error: #d9534f;
+  --myxp-radius: 14px;
+  --myxp-logo: url('https://i.imgur.com/qgNI9zO.png');
+}
+
+/* Page */
+
+html,
+body {
+  min-height: 100% !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+body {
+  background: var(--myxp-bg) !important;
+  font-family: 'Manrope', sans-serif !important;
+  color: var(--myxp-navy) !important;
+  margin: 0 !important;
+  padding: 40px 16px 80px !important;
+  line-height: 1.6 !important;
+}
+
+/* Main form card */
+
+#container {
+  max-width: 860px !important;
+  margin: 0 auto 60px !important;
+  background: var(--myxp-white) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 30px rgba(30, 65, 155, 0.08) !important;
+  overflow: visible !important;
+  border: none !important;
+}
+
+/* Logo header */
+
+#container::before {
+  content: "";
+  display: block;
+  height: 125px;
+  background-color: var(--myxp-bg);
+  background-image: var(--myxp-logo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 220px auto;
+  border-radius: 20px 20px 0 0 !important;
+  border-bottom: 1px solid #e8ecef;
+}
+
+/* Form inner area */
+
+.wufoo {
+  padding: 34px 42px 56px !important;
+  font-family: 'Manrope', sans-serif !important;
+  color: var(--myxp-navy) !important;
+  box-sizing: border-box !important;
+}
+
+/* Title */
+
+.wufoo .info h2 {
+  color: var(--myxp-navy) !important;
+  font-size: 34px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em;
+  text-align: center !important;
+  margin: 0 0 10px !important;
+}
+
+/* Form description */
+
+.wufoo .info div {
+  color: var(--myxp-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  text-align: center !important;
+  max-width: 680px !important;
+  margin: 0 auto 28px !important;
+}
+
+/* Sections */
+
+.wufoo .section h3 {
+  background: #f3f6f8 !important;
+  color: var(--myxp-navy) !important;
+  border-radius: var(--myxp-radius) !important;
+  padding: 16px 20px !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em;
+  margin: 34px 0 22px !important;
+  border: none !important;
+}
+
+/* Fields */
+
+.wufoo li {
+  margin-bottom: 24px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Labels */
+
+.wufoo label.desc,
+.wufoo legend.desc,
+.wufoo .choice,
+.wufoo label {
+  color: var(--myxp-navy) !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.wufoo label.desc,
+.wufoo legend.desc {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  margin-bottom: 7px !important;
+}
+
+/* Required marker */
+
+.wufoo .req {
+  color: var(--myxp-teal) !important;
+  font-weight: 800 !important;
+}
+
+/* Inputs */
+
+.wufoo input.text,
+.wufoo input.search,
+.wufoo input.file,
+.wufoo textarea.textarea,
+.wufoo select.select {
+  width: 100% !important;
+  border: 1px solid var(--myxp-border) !important;
+  border-radius: 10px !important;
+  background: var(--myxp-white) !important;
+  color: var(--myxp-navy) !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  padding: 12px 14px !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+
+.wufoo textarea.textarea {
+  min-height: 130px !important;
+  resize: vertical !important;
+}
+
+/* Focus states */
+
+.wufoo input.text:focus,
+.wufoo input.search:focus,
+.wufoo textarea.textarea:focus,
+.wufoo select.select:focus {
+  border-color: var(--myxp-teal) !important;
+  box-shadow: 0 0 0 3px rgba(15, 174, 189, 0.16) !important;
+  outline: none !important;
+}
+
+/* Help text */
+
+.wufoo .instruct,
+.wufoo p.instruct,
+.wufoo .field .instruct,
+.wufoo small,
+.wufoo .instructions {
+  color: var(--myxp-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  font-weight: 500 !important;
+  background: #f7fbfc !important;
+  border-left: 4px solid var(--myxp-teal) !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  margin-top: 8px !important;
+}
+
+/* Checkboxes and radios */
+
+.wufoo input.checkbox,
+.wufoo input.radio {
+  accent-color: var(--myxp-teal);
+  margin-right: 8px !important;
+}
+
+.wufoo span label.choice,
+.wufoo label.choice {
+  display: inline-block !important;
+  background: #f8fafb !important;
+  border: 1px solid #e7edf2 !important;
+  border-radius: 10px !important;
+  padding: 12px 14px !important;
+  margin-top: 6px !important;
+  color: var(--myxp-navy) !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  font-weight: 600 !important;
+}
+
+/* Submit area */
+
+.wufoo .buttons,
+.wufoo li.buttons {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-top: 36px !important;
+  padding: 24px 0 0 !important;
+  clear: both !important;
+  overflow: visible !important;
+}
+
+/* Submit button */
+
+.wufoo input.btTxt,
+.wufoo input.submit,
+.wufoo button.submit {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: static !important;
+  background: var(--myxp-teal) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 15px 28px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(15, 174, 189, 0.18) !important;
+}
+
+.wufoo input.btTxt:hover,
+.wufoo input.submit:hover,
+.wufoo button.submit:hover {
+  background: var(--myxp-navy) !important;
+}
+
+/* Errors */
+
+.wufoo li.error,
+.wufoo .error {
+  border-radius: 10px !important;
+  color: var(--myxp-error) !important;
+}
+
+.wufoo li.error input,
+.wufoo li.error textarea,
+.wufoo li.error select {
+  border-color: var(--myxp-error) !important;
+}
+
+/* File upload */
+
+.wufoo input.file {
+  border-radius: 10px !important;
+  border: 2px dashed #ccd6dd !important;
+  background: #fafcfd !important;
+  padding: 14px !important;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+
+  body {
+    padding: 20px 10px 90px !important;
+  }
+
+  #container {
+    margin: 0 auto 50px !important;
+    border-radius: 16px !important;
+  }
+
+  #container::before {
+    height: 95px !important;
+    background-size: 170px auto !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+
+  .wufoo {
+    padding: 24px 20px 44px !important;
+  }
+
+  .wufoo .info h2 {
+    font-size: 28px !important;
+  }
+
+  .wufoo .section h3 {
+    font-size: 22px !important;
+    padding: 14px 16px !important;
+  }
+
+  .wufoo label.desc,
+  .wufoo legend.desc {
+    font-size: 16px !important;
+  }
+
+  .wufoo .instruct,
+  .wufoo p.instruct,
+  .wufoo small {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+
+  .wufoo input.btTxt,
+  .wufoo input.submit,
+  .wufoo button.submit {
+    width: 100% !important;
+  }
+}
