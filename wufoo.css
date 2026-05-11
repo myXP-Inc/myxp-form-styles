@@ -1,5 +1,6 @@
 /* =========================================================
-   myXP Wufoo Theme
+   myXP Wufoo Theme — Version 2026-05-11-v3
+   Goal: Match myXP Formstack styling as closely as Wufoo allows.
 ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
@@ -47,7 +48,7 @@ body {
   border: none !important;
 }
 
-/* Logo header */
+/* myXP logo header */
 
 #container::before {
   content: "";
@@ -62,16 +63,16 @@ body {
   border-bottom: 1px solid #e8ecef;
 }
 
-/* Hide / soften Wufoo branding area */
+/* Hide Wufoo branding/header strip */
 
 #logo,
 #logo a,
-#container > .wufooHeader,
-#container .logo {
+#container .logo,
+#container > .wufooHeader {
   display: none !important;
 }
 
-/* Form inner area */
+/* Inner form area */
 
 .wufoo {
   padding: 34px 42px 56px !important;
@@ -153,23 +154,15 @@ body {
 /* Labels */
 
 .wufoo label.desc,
-.wufoo legend.desc,
-.wufoo label,
-.wufoo .choice {
-  color: var(--myxp-navy) !important;
-  font-family: 'Manrope', sans-serif !important;
-}
-
-.wufoo label.desc,
 .wufoo legend.desc {
   display: block !important;
+  color: var(--myxp-navy) !important;
+  font-family: 'Manrope', sans-serif !important;
   font-size: 15px !important;
   font-weight: 700 !important;
   line-height: 1.35 !important;
   margin-bottom: 8px !important;
 }
-
-/* Required marker */
 
 .wufoo .req {
   color: var(--myxp-teal) !important;
@@ -191,12 +184,6 @@ body {
   padding: 12px 14px !important;
   box-shadow: none !important;
   box-sizing: border-box !important;
-}
-
-.wufoo input.text,
-.wufoo input.search,
-.wufoo textarea.textarea,
-.wufoo select.select {
   max-width: 100% !important;
 }
 
@@ -205,12 +192,20 @@ body {
   resize: vertical !important;
 }
 
-/* Normal full-width fields */
-
-.wufoo .notranslate input.text,
-.wufoo .notranslate textarea.textarea,
-.wufoo .notranslate select.select {
+.wufoo input.large,
+.wufoo select.large,
+.wufoo textarea.large {
   width: 100% !important;
+}
+
+.wufoo input.medium,
+.wufoo select.medium {
+  width: 260px !important;
+}
+
+.wufoo input.small,
+.wufoo select.small {
+  width: 86px !important;
 }
 
 /* Focus states */
@@ -236,8 +231,6 @@ body {
   font-weight: 500 !important;
 }
 
-/* Friendly callout-style instruction text */
-
 .wufoo .instruct,
 .wufoo p.instruct {
   background: #f7fbfc !important;
@@ -248,43 +241,56 @@ body {
 }
 
 /* =========================================================
-   RADIO BUTTONS & CHECKBOXES — FIXED
+   RADIO BUTTONS & CHECKBOXES — IMPORTANT FIX
 ========================================================= */
+
+/* Wufoo wraps options in spans. This turns each option into one row. */
+
+.wufoo li span {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 8px 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* The actual radio/checkbox */
 
 .wufoo input.radio,
 .wufoo input.checkbox {
-  accent-color: var(--myxp-teal) !important;
-  width: 16px !important;
-  height: 16px !important;
-  margin: 0 12px 0 0 !important;
-  padding: 0 !important;
-  flex: 0 0 auto !important;
+  display: inline-block !important;
   position: static !important;
+  float: none !important;
+  flex: 0 0 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  accent-color: var(--myxp-teal) !important;
   vertical-align: middle !important;
 }
 
-/* Each option row */
+/* The choice card/text */
 
-.wufoo span,
-.wufoo li span {
-  overflow: visible !important;
-}
-
-/* Option label cards */
-
-.wufoo span label.choice,
 .wufoo label.choice {
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
+  flex: 1 1 auto !important;
   min-height: 48px !important;
   width: auto !important;
   max-width: 100% !important;
+  margin: 0 !important;
+  padding: 12px 14px !important;
   background: #f8fafb !important;
   border: 1px solid #e7edf2 !important;
   border-radius: 10px !important;
-  padding: 12px 14px !important;
-  margin: 6px 0 8px !important;
   color: var(--myxp-navy) !important;
+  font-family: 'Manrope', sans-serif !important;
   font-size: 14px !important;
   line-height: 1.45 !important;
   font-weight: 600 !important;
@@ -293,60 +299,27 @@ body {
   overflow: visible !important;
 }
 
-/* Make radio/checkbox groups stack cleanly */
-
-.wufoo li div span,
-.wufoo li span {
-  display: block !important;
-  margin: 0 0 8px !important;
-}
-
-/* Keep option text aligned and not cut off */
-
-.wufoo label.choice {
-  margin-left: 0 !important;
-  padding-left: 14px !important;
-}
-
-/* Selected option subtle feel */
+/* Selected state */
 
 .wufoo input.radio:checked + label.choice,
 .wufoo input.checkbox:checked + label.choice {
-  border-color: rgba(15, 174, 189, 0.45) !important;
+  border-color: rgba(15, 174, 189, 0.55) !important;
   background: #f2fbfc !important;
 }
 
-/* =========================================================
-   MULTI-PART FIELDS
-========================================================= */
+/* Do not let sub-label styling break option labels */
 
-.wufoo span.symbol,
-.wufoo .symbol {
+.wufoo li span label.choice {
   color: var(--myxp-navy) !important;
-  padding: 0 6px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  margin-top: 0 !important;
 }
 
-/* Name/date/phone chunks should not be forced full width */
+/* Multi-part field sub-labels */
 
-.wufoo input.small,
-.wufoo select.small {
-  width: 90px !important;
-}
-
-.wufoo input.medium,
-.wufoo select.medium {
-  width: 220px !important;
-}
-
-.wufoo input.large,
-.wufoo select.large,
-.wufoo textarea.large {
-  width: 100% !important;
-}
-
-/* Sub-labels under split fields */
-
-.wufoo span label {
+.wufoo li:not(.radio):not(.checkbox) span label:not(.choice),
+.wufoo span label:not(.choice) {
   display: block !important;
   color: var(--myxp-navy) !important;
   font-size: 12px !important;
@@ -354,16 +327,28 @@ body {
   margin-top: 4px !important;
 }
 
-/* Keep split field pieces tidy */
+/* Symbols and split fields */
 
-.wufoo li span {
+.wufoo span.symbol,
+.wufoo .symbol {
+  color: var(--myxp-navy) !important;
+  padding: 0 6px !important;
+}
+
+.wufoo li.complex span,
+.wufoo li.phone span,
+.wufoo li.date span,
+.wufoo li.time span,
+.wufoo li.name span,
+.wufoo li.address span {
+  display: inline-block !important;
+  width: auto !important;
+  max-width: none !important;
   margin-right: 8px !important;
   vertical-align: top !important;
 }
 
-/* =========================================================
-   SUBMIT AREA
-========================================================= */
+/* Submit area */
 
 .wufoo .buttons,
 .wufoo li.buttons {
@@ -375,8 +360,6 @@ body {
   clear: both !important;
   overflow: visible !important;
 }
-
-/* Submit button */
 
 .wufoo input.btTxt,
 .wufoo input.submit,
@@ -470,7 +453,10 @@ body {
     line-height: 1.55 !important;
   }
 
-  .wufoo span label.choice,
+  .wufoo li span {
+    max-width: 100% !important;
+  }
+
   .wufoo label.choice {
     width: 100% !important;
     min-height: 46px !important;
