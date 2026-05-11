@@ -9,6 +9,7 @@
   --myxp-navy: #224466;
   --myxp-bg: #F4F4F3;
   --myxp-white: #ffffff;
+  --myxp-soft: #f7fafb;
   --myxp-border: #dfe5ea;
   --myxp-muted: #66788a;
   --myxp-error: #d9534f;
@@ -61,6 +62,15 @@ body {
   border-bottom: 1px solid #e8ecef;
 }
 
+/* Hide / soften Wufoo branding area */
+
+#logo,
+#logo a,
+#container > .wufooHeader,
+#container .logo {
+  display: none !important;
+}
+
 /* Form inner area */
 
 .wufoo {
@@ -68,9 +78,22 @@ body {
   font-family: 'Manrope', sans-serif !important;
   color: var(--myxp-navy) !important;
   box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.wufoo ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
 /* Title */
+
+.wufoo .info {
+  border-bottom: 1px dotted #d7dde3 !important;
+  padding-bottom: 34px !important;
+  margin-bottom: 34px !important;
+}
 
 .wufoo .info h2 {
   color: var(--myxp-navy) !important;
@@ -81,18 +104,22 @@ body {
   margin: 0 0 10px !important;
 }
 
-/* Form description */
-
 .wufoo .info div {
   color: var(--myxp-muted) !important;
   font-size: 14px !important;
   line-height: 1.55 !important;
   text-align: center !important;
   max-width: 680px !important;
-  margin: 0 auto 28px !important;
+  margin: 0 auto !important;
 }
 
-/* Sections */
+/* Section headers */
+
+.wufoo .section {
+  margin: 36px 0 26px !important;
+  padding: 0 !important;
+  border: none !important;
+}
 
 .wufoo .section h3 {
   background: #f3f6f8 !important;
@@ -102,35 +129,44 @@ body {
   font-size: 22px !important;
   font-weight: 800 !important;
   letter-spacing: -0.02em;
-  margin: 34px 0 22px !important;
+  margin: 0 0 20px !important;
   border: none !important;
 }
 
-/* Fields */
+.wufoo .section div {
+  color: var(--myxp-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+}
+
+/* Field spacing */
 
 .wufoo li {
-  margin-bottom: 24px !important;
+  margin: 0 0 24px !important;
   padding: 0 !important;
   background: transparent !important;
   border: none !important;
+  overflow: visible !important;
+  clear: both !important;
 }
 
 /* Labels */
 
 .wufoo label.desc,
 .wufoo legend.desc,
-.wufoo .choice,
-.wufoo label {
+.wufoo label,
+.wufoo .choice {
   color: var(--myxp-navy) !important;
   font-family: 'Manrope', sans-serif !important;
 }
 
 .wufoo label.desc,
 .wufoo legend.desc {
+  display: block !important;
   font-size: 15px !important;
   font-weight: 700 !important;
   line-height: 1.35 !important;
-  margin-bottom: 7px !important;
+  margin-bottom: 8px !important;
 }
 
 /* Required marker */
@@ -144,10 +180,8 @@ body {
 
 .wufoo input.text,
 .wufoo input.search,
-.wufoo input.file,
 .wufoo textarea.textarea,
 .wufoo select.select {
-  width: 100% !important;
   border: 1px solid var(--myxp-border) !important;
   border-radius: 10px !important;
   background: var(--myxp-white) !important;
@@ -159,9 +193,24 @@ body {
   box-sizing: border-box !important;
 }
 
+.wufoo input.text,
+.wufoo input.search,
+.wufoo textarea.textarea,
+.wufoo select.select {
+  max-width: 100% !important;
+}
+
 .wufoo textarea.textarea {
   min-height: 130px !important;
   resize: vertical !important;
+}
+
+/* Normal full-width fields */
+
+.wufoo .notranslate input.text,
+.wufoo .notranslate textarea.textarea,
+.wufoo .notranslate select.select {
+  width: 100% !important;
 }
 
 /* Focus states */
@@ -179,13 +228,18 @@ body {
 
 .wufoo .instruct,
 .wufoo p.instruct,
-.wufoo .field .instruct,
 .wufoo small,
 .wufoo .instructions {
   color: var(--myxp-muted) !important;
   font-size: 13px !important;
   line-height: 1.5 !important;
   font-weight: 500 !important;
+}
+
+/* Friendly callout-style instruction text */
+
+.wufoo .instruct,
+.wufoo p.instruct {
   background: #f7fbfc !important;
   border-left: 4px solid var(--myxp-teal) !important;
   padding: 12px 14px !important;
@@ -193,29 +247,123 @@ body {
   margin-top: 8px !important;
 }
 
-/* Checkboxes and radios */
+/* =========================================================
+   RADIO BUTTONS & CHECKBOXES — FIXED
+========================================================= */
 
-.wufoo input.checkbox,
-.wufoo input.radio {
-  accent-color: var(--myxp-teal);
-  margin-right: 8px !important;
+.wufoo input.radio,
+.wufoo input.checkbox {
+  accent-color: var(--myxp-teal) !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 12px 0 0 !important;
+  padding: 0 !important;
+  flex: 0 0 auto !important;
+  position: static !important;
+  vertical-align: middle !important;
 }
+
+/* Each option row */
+
+.wufoo span,
+.wufoo li span {
+  overflow: visible !important;
+}
+
+/* Option label cards */
 
 .wufoo span label.choice,
 .wufoo label.choice {
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 48px !important;
+  width: auto !important;
+  max-width: 100% !important;
   background: #f8fafb !important;
   border: 1px solid #e7edf2 !important;
   border-radius: 10px !important;
   padding: 12px 14px !important;
-  margin-top: 6px !important;
+  margin: 6px 0 8px !important;
   color: var(--myxp-navy) !important;
   font-size: 14px !important;
-  line-height: 1.6 !important;
+  line-height: 1.45 !important;
   font-weight: 600 !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  overflow: visible !important;
 }
 
-/* Submit area */
+/* Make radio/checkbox groups stack cleanly */
+
+.wufoo li div span,
+.wufoo li span {
+  display: block !important;
+  margin: 0 0 8px !important;
+}
+
+/* Keep option text aligned and not cut off */
+
+.wufoo label.choice {
+  margin-left: 0 !important;
+  padding-left: 14px !important;
+}
+
+/* Selected option subtle feel */
+
+.wufoo input.radio:checked + label.choice,
+.wufoo input.checkbox:checked + label.choice {
+  border-color: rgba(15, 174, 189, 0.45) !important;
+  background: #f2fbfc !important;
+}
+
+/* =========================================================
+   MULTI-PART FIELDS
+========================================================= */
+
+.wufoo span.symbol,
+.wufoo .symbol {
+  color: var(--myxp-navy) !important;
+  padding: 0 6px !important;
+}
+
+/* Name/date/phone chunks should not be forced full width */
+
+.wufoo input.small,
+.wufoo select.small {
+  width: 90px !important;
+}
+
+.wufoo input.medium,
+.wufoo select.medium {
+  width: 220px !important;
+}
+
+.wufoo input.large,
+.wufoo select.large,
+.wufoo textarea.large {
+  width: 100% !important;
+}
+
+/* Sub-labels under split fields */
+
+.wufoo span label {
+  display: block !important;
+  color: var(--myxp-navy) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  margin-top: 4px !important;
+}
+
+/* Keep split field pieces tidy */
+
+.wufoo li span {
+  margin-right: 8px !important;
+  vertical-align: top !important;
+}
+
+/* =========================================================
+   SUBMIT AREA
+========================================================= */
 
 .wufoo .buttons,
 .wufoo li.buttons {
@@ -320,6 +468,12 @@ body {
   .wufoo small {
     font-size: 14px !important;
     line-height: 1.55 !important;
+  }
+
+  .wufoo span label.choice,
+  .wufoo label.choice {
+    width: 100% !important;
+    min-height: 46px !important;
   }
 
   .wufoo input.btTxt,
